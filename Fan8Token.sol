@@ -1,12 +1,13 @@
 /**
-   #Fan8Token features:
+
+   #Fan8 features:
    5% fee auto add to the liquidity pool
    5% fee auto distribute to all holders
+
  */
 
 pragma solidity ^0.6.12;
 // SPDX-License-Identifier: Unlicensed
-
 
 import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 import "@openzeppelin/contracts/math/SafeMath.sol";
@@ -17,9 +18,7 @@ import "@uniswap/v2-core/contracts/interfaces/IUniswapV2Pair.sol";
 import "@uniswap/v2-periphery/contracts/interfaces/IUniswapV2Router01.sol";
 import "@uniswap/v2-periphery/contracts/interfaces/IUniswapV2Router02.sol";
 
-
-
-contract Fan8Token is Context, IERC20, Ownable {
+contract FAN8 is Context, IERC20, Ownable {
     using SafeMath for uint256;
     using Address for address;
 
@@ -33,12 +32,13 @@ contract Fan8Token is Context, IERC20, Ownable {
     address[] private _excluded;
    
     uint256 private constant MAX = ~uint256(0);
+    // 888,888 tokens with 18 decimals
     uint256 private _tTotal = 888888 * 10**18;
     uint256 private _rTotal = (MAX - (MAX % _tTotal));
     uint256 private _tFeeTotal;
 
-    string private _name = "Fan8 TOKEN";
-    string private _symbol = "Fan8";
+    string private _name = "FAN8";
+    string private _symbol = "FAN8";
     uint8 private _decimals = 18;
     
     uint256 public _taxFee = 5;
@@ -47,14 +47,14 @@ contract Fan8Token is Context, IERC20, Ownable {
     uint256 public _liquidityFee = 5;
     uint256 private _previousLiquidityFee = _liquidityFee;
 
-    IUniswapV2Router02 public uniswapV2Router;
-    address public uniswapV2Pair;
+    IUniswapV2Router02 public immutable uniswapV2Router;
+    address public immutable uniswapV2Pair;
     
     bool inSwapAndLiquify;
     bool public swapAndLiquifyEnabled = true;
     
-    uint256 public _maxTxAmount = 88888 * 10**18;
-    uint256 private numTokensSellToAddToLiquidity = 8888 * 10**18;
+    uint256 public _maxTxAmount = 888888 * 10**18;
+    uint256 private numTokensSellToAddToLiquidity = 888 * 10**18;
     
     event MinTokensBeforeSwapUpdated(uint256 minTokensBeforeSwap);
     event SwapAndLiquifyEnabledUpdated(bool enabled);
@@ -356,7 +356,6 @@ contract Fan8Token is Context, IERC20, Ownable {
             swapAndLiquifyEnabled
         ) {
             contractTokenBalance = numTokensSellToAddToLiquidity;
-
             //add liquidity
             swapAndLiquify(contractTokenBalance);
         }
