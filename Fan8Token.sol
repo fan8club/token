@@ -1,10 +1,7 @@
 /**
-
    #Fan8Token features:
-   5% fee auto add to the liquidity pool to locked forever when selling
+   5% fee auto add to the liquidity pool
    5% fee auto distribute to all holders
-   I created a black hole so #Fan8 token will deflate itself in supply with every transaction
-
  */
 
 pragma solidity ^0.6.12;
